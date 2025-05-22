@@ -1,15 +1,16 @@
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import rsscalelabel.RSScaleLabel;
 
 public class tanque extends javax.swing.JFrame {
 
     public tanque() {
         initComponents();
-        rsscalelabel.RSScaleLabel.setScaleLabel(imagenCasa, "src/imagenes/vivienda.png");
+        RSScaleLabel.setScaleLabel(imagenCasa, "src/imagenes/vivienda.png");
         jProgressBar1.setOrientation(SwingConstants.VERTICAL);
         jProgressBar1.setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
         jButton2.setEnabled(false);
@@ -38,11 +39,13 @@ public class tanque extends javax.swing.JFrame {
         imagenCasa = new javax.swing.JLabel();
         valvula1 = new javax.swing.JLabel();
         llave1 = new javax.swing.JLabel();
+        btnAutomatico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 204));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jProgressBar1.setBackground(new java.awt.Color(255, 255, 255));
         jProgressBar1.setForeground(new java.awt.Color(73, 154, 245));
@@ -96,6 +99,14 @@ public class tanque extends javax.swing.JFrame {
 
         llave1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tuberiaLlaveRoja.png"))); // NOI18N
 
+        btnAutomatico.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAutomatico.setText("Automático");
+        btnAutomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAutomaticoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -103,39 +114,42 @@ public class tanque extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(valvula1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(289, 289, 289)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(75, 75, 75)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(75, 75, 75)
-                                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addGap(69, 69, 69)
-                                            .addComponent(jLabel3)))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(llave1)
-                                .addGap(62, 62, 62)
-                                .addComponent(imagenCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(52, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(289, 289, 289)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(75, 75, 75)
+                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(75, 75, 75)
+                                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                    .addGap(69, 69, 69)
+                                                    .addComponent(jLabel3)))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(llave1)
+                                        .addGap(62, 62, 62)
+                                        .addComponent(imagenCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(52, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addGap(113, 113, 113))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(113, 113, 113))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(342, 342, 342))
+                        .addComponent(btnAutomatico, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,9 +158,15 @@ public class tanque extends javax.swing.JFrame {
                 .addComponent(valvula1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAutomatico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -174,7 +194,7 @@ public class tanque extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,11 +203,26 @@ public class tanque extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private int nivelMaximo = 100; // Por defecto
+    private int nivelMinimo = 20;  // Por defecto
 
     private Timer timerLlenado;
     private Timer timerVaciado;
     
+    private void pedirNivelesAlUsuario() {
+    try {
+        String max = JOptionPane.showInputDialog(this, "¿Hasta qué nivel quieres llenar el tanque? (1-100)", "100");
+        if (max != null) nivelMaximo = Math.min(100, Math.max(1, Integer.parseInt(max)));
+        String min = JOptionPane.showInputDialog(this, "¿Nivel mínimo para activar llenado automático? (1-" + nivelMaximo + ")", "20");
+        if (min != null) nivelMinimo = Math.min(nivelMaximo, Math.max(1, Integer.parseInt(min)));
+    } catch (Exception e) {
+        nivelMaximo = 100;
+        nivelMinimo = 20;
+    }
+}
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (automaticoActivo) return;
         
         jButton3.setEnabled(false);
         jButton4.setEnabled(true);
@@ -198,19 +233,20 @@ public class tanque extends javax.swing.JFrame {
 
         cambiarIconoLlave("tuberiaLlaveVerde.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(llave1, "src/imagenes/tuberiaLlaveVerde.png");
-
+        
         timerVaciado = new Timer(100, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (jProgressBar1.getValue() > 0) {
                     jProgressBar1.setValue(jProgressBar1.getValue() - 1);
                 } else {
-                    timerVaciado.stop(); // Detener cuando llega a cero
+                    timerVaciado.stop();
                     jButton3.setEnabled(true);
                     jButton4.setEnabled(false);
+                    cambiarIconoLlave("tuberiaLlaveRoja.png");
+                    rsscalelabel.RSScaleLabel.setScaleLabel(llave1, "src/imagenes/tuberiaLlaveRoja.png");
                 }
             }
         });
-
         timerVaciado.start();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -225,6 +261,8 @@ public class tanque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (automaticoActivo) return;
+        
         cambiarIconoValvula("tuberiaValvulaVerde.png");
         cambiarIconoLlave("tuberiaLlaveRoja.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(llave1, "src/imagenes/tuberiaLlaveRoja.png");
@@ -235,21 +273,79 @@ public class tanque extends javax.swing.JFrame {
         if (timerVaciado != null && timerVaciado.isRunning()) {
             timerVaciado.stop();
         }
-
+        
         timerLlenado = new Timer(100, new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
-                if (jProgressBar1.getValue() < 100) {
+                if (jProgressBar1.getValue() < nivelMaximo) {
                     jProgressBar1.setValue(jProgressBar1.getValue() + 1);
                 } else {
                     timerLlenado.stop();
+                    cambiarIconoValvula("tuberiaValvulaRoja.png");
                     jButton1.setEnabled(true);
                     jButton2.setEnabled(false);
                 }
             }
         });
-        timerLlenado.start();
+       
+     timerLlenado.start();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void iniciarLlenadoAutomatico() {
+        cambiarIconoValvula("tuberiaValvulaVerde.png");
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        
+        if (timerVaciado != null && timerVaciado.isRunning()) timerVaciado.stop();
+        
+        timerLlenado = new Timer(100, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (!automaticoActivo) {
+                    timerLlenado.stop();
+                    return;
+                }
+                if (jProgressBar1.getValue() < nivelMaximo) {
+                    jProgressBar1.setValue(jProgressBar1.getValue() + 1);
+                } else {
+                    timerLlenado.stop();
+                    cambiarIconoValvula("tuberiaValvulaRoja.png");
+                    if (automaticoActivo) {
+                        iniciarVaciadoAutomatico();
+                    }
+                }
+            }
+        });
+    
+      timerLlenado.start();
+    }
+    
+    private void iniciarVaciadoAutomatico() {
+        cambiarIconoLlave("tuberiaLlaveVerde.png");
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
+        
+        if (timerLlenado != null && timerLlenado.isRunning()) timerLlenado.stop();
+
+        timerVaciado = new Timer(100, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (!automaticoActivo) {
+                timerVaciado.stop();
+                return;
+                }
+                if (jProgressBar1.getValue() > nivelMinimo) {
+                    jProgressBar1.setValue(jProgressBar1.getValue() - 1);
+                } else {
+                    timerVaciado.stop();
+                    cambiarIconoLlave("tuberiaLlaveRoja.png");
+                    if (automaticoActivo) {
+                        iniciarLlenadoAutomatico();
+                    }
+                }
+            }
+        });
+
+        timerVaciado.start();
+    }
+
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (timerVaciado != null && timerVaciado.isRunning()) {
@@ -260,6 +356,52 @@ public class tanque extends javax.swing.JFrame {
             jButton4.setEnabled(false);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+   
+    // PROCESO AUTOMATICO METODOS 
+    
+    private void deshabilitarBotonesManuales() {
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
+    }
+    
+    private void habilitarBotonesManuales() {
+        jButton1.setEnabled(true);
+        jButton3.setEnabled(true);
+    }
+    
+    private void detenerTimers() {
+        if (timerLlenado != null && timerLlenado.isRunning()) timerLlenado.stop();
+        if (timerVaciado != null && timerVaciado.isRunning()) timerVaciado.stop();
+    }
+    
+    private boolean automaticoActivo = false;
+    
+    private void btnAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomaticoActionPerformed
+        
+        automaticoActivo = !automaticoActivo; // Cambia el estado
+    
+        if (automaticoActivo) {
+            btnAutomatico.setText("Detener Automático");
+            deshabilitarBotonesManuales();
+            pedirNivelesAlUsuario(); // Pide min/max al usuario cada vez que se activa
+            
+            if (jProgressBar1.getValue() <= nivelMinimo) {
+                iniciarLlenadoAutomatico();
+            } else if (jProgressBar1.getValue() >= nivelMaximo) {
+                iniciarVaciadoAutomatico();
+            } else {
+                iniciarLlenadoAutomatico();
+            }
+        } else {
+            btnAutomatico.setText("Iniciar Automático");
+            habilitarBotonesManuales();
+            detenerTimers();
+            nivelMaximo = 100; // Por defecto
+            nivelMinimo = 0; 
+        }
+    }//GEN-LAST:event_btnAutomaticoActionPerformed
     
     private void cambiarIconoValvula(String nombreArchivo) {
     ImageIcon icono = new ImageIcon(getClass().getResource("/imagenes/" + nombreArchivo));
@@ -306,6 +448,7 @@ public class tanque extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAutomatico;
     private javax.swing.JLabel imagenCasa;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
